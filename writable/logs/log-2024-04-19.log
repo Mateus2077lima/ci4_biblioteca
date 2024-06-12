@@ -1,0 +1,10 @@
+CRITICAL - 2024-04-19 17:35:13 --> ParseError: syntax error, unexpected token "=", expecting "]"
+in APPPATH/Views/usuario/edit.php on line 38.
+ 1 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Usuario.php(33): view()
+ 4 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Usuario->editar()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdocs/c14_biblioteca/public/index.php')
