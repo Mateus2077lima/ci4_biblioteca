@@ -19,6 +19,7 @@
         <tbody>
         <?php foreach($listaAlunos as $au) :?>
                 <tr>
+                    
                     <td>
                         <?=$au['id']?>
                     </td>
