@@ -25,10 +25,10 @@ class Obra extends BaseController
     
     public function index(){
         $obra = $this->obraModel->findAll();
-        $editora = $this->editoraModel->findAll();
+        $editoras = $this->editoraModel->findAll();
         echo view('_partials/header');
         echo view('_partials/navbar');
-        echo view('obra/index.php',['listaObra'=>$obra,'listaEditoras'=>$editora]);
+        echo view('obra/index.php',['listaObra'=>$obra,'listaEditoras'=>$editoras]);
         echo view('_partials/footer');
     }
 
@@ -41,12 +41,12 @@ class Obra extends BaseController
     public function editar($id){
         $obra = $this->obraModel->find($id);
         $autor = $this->autorModel->findAll();
-        $editora = $this->editoraModel->findAll();
+        $editoras = $this->editoraModel->findAll();
         $dadosAutorObra = $this->autorObraModel->findAll();
         
         echo view('_partials/header');
         echo view('_partials/navbar');
-        echo view('obra/edit',['obra' => $obra,'listaAutor' => $autor,'listaEditoras' => $editora,'listaAutorObra' => $dadosAutorObra]);
+        echo view('obra/edit',['obra' => $obra,'listaAutor' => $autor,'listaEditoras' => $editoras,'listaAutorObra' => $dadosAutorObra]);
         echo view('_partials/footer');
     }
 

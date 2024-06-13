@@ -1,4 +1,3 @@
-<div class="text-bg-warning p-3">
 <div class="container">
     <h2>Usuario</h2>
         <!-- Button do Modal -->

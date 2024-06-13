@@ -1,5 +1,3 @@
-
-<div class="text-bg-warning p-3">
 <div class="container" >
     <h2>Emprestimo</h2>
         <!-- Button do Modal -->

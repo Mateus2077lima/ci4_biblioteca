@@ -1,4 +1,3 @@
-<div class="text-bg-warning p-3">
 <div class="container">
     <h2>Obra</h2>
         <!-- Button do Modal -->
@@ -35,13 +34,10 @@
                     <td>
                         <?=$ob['isbn']?>
                     </td>
-                <?php
-                    foreach($listaEditoras as $editora){
-                        $editoras[$editora['id']] = $editora['nome'];
-                    }
-                ?>
-                <td><?=$ob['id_editoras']?></td>
-            </tr>
+                    <td>
+                        <?=$ob["id_editoras"]?>
+                    </td>
+                </tr>
             <?php endforeach ?>
         </tbody>
     </table>

@@ -1,7 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-warning mb-3 " data-bs-theme="text-white">
-<a class="icon-link" href="#">
-  <svg class="bi" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
-</a>
+<nav class="navbar navbar-expand-lg bg-secondary mb-3 " data-bs-theme="text-light">
 <div class="container">
 
     <?=anchor("#","Biblioteca Virtual",['class' => 'navbar-brand'])?>

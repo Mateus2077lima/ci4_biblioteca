@@ -7,4 +7,4 @@
     <link rel="stylesheet" href="<?=base_url('/assets/bootstrap/css/bootstrap.css')?>">    
     <title>Biblioteca</title>
 </head>
-<body>
+<body class ="bg-info ">
