@@ -28,6 +28,12 @@
         <li class="nav-item">
           <?=anchor("Emprestimo/index","Emprestimo",['class' => 'nav-link active link-secondary text-light', 'aria-current'=>'page',])?>
         </li>
+      </ul>
+        <?= anchor('Login/logout','Sair',
+              [
+                'class' => 'btn btn-outline-black'
+              ] )
+        ?>
     </div>
   </div>
 </nav>

@@ -23,7 +23,6 @@ class Usuario extends BaseController{
 
     public function cadastrar(){
         $usuario = $this->request->getPost();
-        $usuario['senha']= md5("senhaforte");
         $this->usuarioModel->save($usuario);
         return redirect()->to('Usuario/index');
     }
