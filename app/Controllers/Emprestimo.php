@@ -9,6 +9,7 @@ use App\Models\AlunoModel;
 use App\Models\UsuarioModel;
 use App\Models\LivroModel;
 use App\Models\ObraModel;
+use CodeIgniter\Session\Session;
 
 class Emprestimo extends BaseController
 {
@@ -17,12 +18,14 @@ class Emprestimo extends BaseController
     private $LivroModel;
     private $UsuarioModel;
     private $ObraModel;
+
     public function __construct(){
         $this->EmprestimoModel = new EmprestimoModel();
         $this->AlunoModel = new AlunoModel();
         $this->UsuarioModel = new UsuarioModel();
         $this->LivroModel = new LivroModel();
         $this->ObraModel = new ObraModel();
+        $this->session = \Config\Services::session();
     }
     public function index()
     {
@@ -38,15 +41,14 @@ class Emprestimo extends BaseController
     }
     public function cadastrar()
     {
-        $dados = $this->request->getPost();
-        $this->EmprestimoModel->save($dados);
-        $this->LivroModel->update($dados['id_livro'], ['disponivel' => 0]);
-        return redirect()->to('emprestimo/index');
+        $Emprestimo = $this->request->getPost();
+        $this->LivroModel->update($Emprestimo['id_livro'],['disponivel' => 0]);
+        $this->EmprestimoModel->save($Emprestimo);
+        return redirect()->to('Emprestimo/index');
     }
     public function editar($id)
     {
         $dados = $this->EmprestimoModel->find($id);
-        $this->LivroModel->update($dados['id_livro'], ['disponivel' => 1]);
         $dadosaluno = $this->AlunoModel->findAll();
         $dadosobra = $this->ObraModel->findAll();
         $dadosusuario = $this->UsuarioModel->findAll();
@@ -56,16 +58,31 @@ class Emprestimo extends BaseController
         echo view('emprestimo/edit',['Emprestimo' => $dados,'listaAluno' => $dadosaluno,'listaLivro' => $dadoslivro,'listaUsuario' => $dadosusuario,'listaObra' => $dadosobra]);
         echo view('_partials/footer');
     }
+    public function devolucao($id)
+    {
+        $dados = $this->EmprestimoModel->find($id);
+        echo view('_partials/header');
+        echo view('_partials/navbar');
+        echo view('devolucao/index',['Devolucao' => $dados]);
+        echo view('_partials/footer');
+    }
     public function salvar(){
         $dados = $this->request->getPost();
-        $this->EmprestimoModel->save($dados);
+        $this->LivroModel->update($dados['id_livro_antigo'], ['disponivel' => 1]);
         $this->LivroModel->update($dados['id_livro'], ['disponivel' => 0]);
+        $this->EmprestimoModel->save($dados);
+        return redirect()->to('emprestimo/index');
+    }
+    public function salvar_devolucao(){
+        $dados = $this->request->getPost();
+        $this->LivroModel->update($dados['id_livro'], ['disponivel' => 1]);
+        $this->EmprestimoModel->save($dados);
         return redirect()->to('emprestimo/index');
     }
     public function excluir(){
         $dados = $this->request->getPost();
+        $this->LivroModel->update($dados['id_livro'],['disponivel' => 1]);
         $this->EmprestimoModel->delete($dados);
-        $this->LivroModel->update($dados['id_livro'], ['disponivel' => 1]);
         return redirect()->to('emprestimo/index');
     }
 }
